@@ -6,7 +6,6 @@
   <version>${tool.version}</version>
   <description>${pkg.description}</description>
   <name>${pkg.name}</name>
-  <maintainer>${pkg.maintainer}</maintainer>
   <packaging>jar</packaging>
 
 
