@@ -1,0 +1,8 @@
+Package: [[name]]
+Version: [[version]]
+Section: libs
+Priority: optional
+Architecture: all
+Maintainer: [[maintainer]]
+Description: [[description]]
+Distribution: development

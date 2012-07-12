@@ -2,10 +2,11 @@
 <project>
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.apache.hadoop.tools</groupId>
-  <artifactId>inmobi-hadoop-distcp</artifactId>
+  <artifactId>${pkg.name}</artifactId>
   <version>${tool.version}</version>
-  <description>Hadoop Tool - Distributed Copy</description>
-  <name>Hadoop Tool - Distributed Copy</name>
+  <description>${pkg.description}</description>
+  <name>${pkg.name}</name>
+  <maintainer>${pkg.maintainer}</maintainer>
   <packaging>jar</packaging>
 
 
@@ -18,6 +19,13 @@
     <system.test.prefix></system.test.prefix>
     <default.repository>https://repository.cloudera.com/content/groups/cloudera-repos</default.repository>
     <local.repo>file:///tmp/repo</local.repo>
+    <pkg.name>inmobi-hadoop-distcp</pkg.name>
+    <pkg.description>Hadoop Tool - Distributed Copy</pkg.description>
+    <pkg.maintainer>Srikanth Sundarrajan</pkg.maintainer>
+    <pkg.section>libs</pkg.section>
+    <pkg.priority>optional</pkg.priority>
+    <pkg.architecture>all</pkg.architecture>
+    <pkg.prefix>/usr/local/lib/inmobi</pkg.prefix>
   </properties>
 
   <distributionManagement>
@@ -301,6 +309,31 @@
       </testResource>
     </testResources>
     <plugins>
+      <plugin>
+        <artifactId>jdeb</artifactId>
+	<groupId>org.vafer</groupId>
+        <version>0.10</version>
+        <executions>
+          <execution>
+          <phase>package</phase>
+          <goals>
+            <goal>jdeb</goal>
+          </goals>
+          <configuration>
+            <dataSet>
+            <data>
+              <src>${project.build.directory}/${project.build.finalName}.jar</src>
+	      <type>file</type>
+	      <mapper>
+	        <type>perm</type>
+                <prefix>${pkg.prefix}</prefix>
+              </mapper>
+            </data>
+            </dataSet>
+          </configuration>
+          </execution>
+        </executions>
+        </plugin>
       <plugin>
         <groupId>com.atlassian.maven.plugins</groupId>
         <artifactId>maven-clover2-plugin</artifactId>
