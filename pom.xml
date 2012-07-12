@@ -2,7 +2,7 @@
 <project>
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.apache.hadoop.tools</groupId>
-  <artifactId>hadoop-distcp</artifactId>
+  <artifactId>inmobi-hadoop-distcp</artifactId>
   <version>${tool.version}</version>
   <description>Hadoop Tool - Distributed Copy</description>
   <name>Hadoop Tool - Distributed Copy</name>
@@ -10,8 +10,8 @@
 
 
   <properties>
-    <tool.version>0.1-SNAPSHOT</tool.version>
-    <hadoop.framework.version>0.20.2-cdh3u0</hadoop.framework.version>
+    <tool.version>0.1</tool.version>
+    <hadoop.framework.version>0.20.2-cdh3u3</hadoop.framework.version>
     <file.encoding>UTF-8</file.encoding>
     <downloadSources>true</downloadSources>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
