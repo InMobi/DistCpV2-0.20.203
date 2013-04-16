@@ -1,23 +1,23 @@
 package org.apache.hadoop.tools;
 
-import java.io.IOException;
-import java.util.List;
-
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.security.Credentials;
+
+import java.io.IOException;
+import java.util.List;
 
 /**
  *  This class does not do any check
  **/
 public class SimpleFileBasedCopyListing extends CopyListing {
 
-  private final CopyListing simpleListing;
+  private final CopyListing simpleLinenantListing;
 
   public SimpleFileBasedCopyListing(Configuration configuration,
       Credentials credentials) {
     super(configuration, credentials);
-    simpleListing = new SimpleCopyListing(getConf(), credentials) ;
+    simpleLinenantListing = new LinenantSimpleCopyListing(getConf(), credentials) ;
   }
 
   /** {@inheritDoc} */
@@ -49,19 +49,19 @@ public class SimpleFileBasedCopyListing extends CopyListing {
     newOption.setPreserveSrcPath(options.shouldPreserveSrcPath());
     newOption.setSkipPathValidation(options.isSkipPathValidation());
     newOption.setUseSimpleFileListing(options.isUseSimpleFileListing());
-    simpleListing.buildListing(pathToListFile, newOption);
+    simpleLinenantListing.buildListing(pathToListFile, newOption);
   }
 
   /** {@inheritDoc} */
   @Override
   protected long getBytesToCopy() {
-    return simpleListing.getBytesToCopy();
+    return simpleLinenantListing.getBytesToCopy();
   }
 
   /** {@inheritDoc} */
   @Override
   protected long getNumberOfPaths() {
-    return simpleListing.getNumberOfPaths();
+    return simpleLinenantListing.getNumberOfPaths();
   }
 
 }
